@@ -1,4 +1,4 @@
-FROM patrickmcelwee/marklogic-dependencies:9.0-EA3
+FROM patrickmcelwee/marklogic-dependencies
 
 MAINTAINER Scott Stafford <scott.stafford@marklogic.com>
 
