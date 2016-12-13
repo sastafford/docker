@@ -1,17 +1,28 @@
-FROM mlregistry.marklogic.com/marklogic/ml-9.0-ea3
+FROM centos:centos7
 
 MAINTAINER Scott Stafford <scott.stafford@marklogic.com>
 
-# If you want vim for local debugging
-RUN yum -y install vim
+RUN yum update -y && yum -y install \
+  gdb.x86_64 \
+  glibc.i686 \
+  redhat-lsb-core.x86_64 \
+  vim
 
-# Start MarkLogic
-RUN init-marklogic
+ENV MARKLOGIC_INSTALL_DIR /opt/MarkLogic
+ENV MARKLOGIC_DATA_DIR /data
+ENV LD_LIBRARY_PATH /opt/MarkLogic/lib:/data/lib
 
-# Expose MarkLogic Server ports
-# Also expose any ports your own MarkLogic App Servers use such as
-# HTTP, REST and XDBC App Servers for your applications
-EXPOSE 7997 7998 7999 8000 8001 8002 8200 8201
+ENV MARKLOGIC_FSTYPE ext4
+ENV MARKLOGIC_USE daemon
+ENV MARKLOGIC_PID_FILE /var/run/MarkLogic.pid
+ENV MARKLOGIC_MLCMD_PID_FILE /var/run/mlcmd.pid
+ENV MARKLOGIC_UMASK 022
+ENV PATH /usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin:/opt/MarkLogic/mlcmd/bin
 
-WORKDIR /home/docker-user
-ENTRYPOINT /usr/sbin/init
+COPY *.rpm /tmp/MarkLogic.rpm
+
+RUN yum -y install /tmp/MarkLogic.rpm && rm /tmp/MarkLogic.rpm
+
+EXPOSE 80 443 7997 7998 7999 8000 8001 8002 8080 8200 8201
+
+CMD /opt/MarkLogic/bin/MarkLogic && tail -f /dev/null
