@@ -1,9 +1,26 @@
-version: '2'
-services:
-  nginx:
-    image: "nginx:latest"
-    ports: ["80:80"]
-  marklogic:
-    image: "sastafford/marklogic:8.0-6.1"
-    ports: ["8001"]
+# Requirements: docker, docker-compose
+# Access to the Private Azure Docker Registry: https://wiki.marklogic.com/display/~sstafford/Deployment+Procedures
 
+version: "3.6"
+
+services:
+  marklogic:
+    image: marklogic.azurecr.io/marklogic:latest
+    volumes:
+      - type: volume
+        source: marklogic_data
+        target: /data
+    ports:
+      - "7997-8020:7997-8020/tcp"
+
+  gradle:
+    image: gradle:alpine
+    volumes:
+      - type: bind
+        source: .
+        target: /home/gradle/project
+    working_dir: /home/gradle/project
+    command: "gradle -PmlHost=marklogic mlInit mlInstallAdmin mlDeploy install"
+
+volumes:
+  marklogic_data:
