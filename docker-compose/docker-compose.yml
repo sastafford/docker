@@ -1,6 +1,3 @@
-# Requirements: docker, docker-compose
-# Access to the Private Azure Docker Registry: https://wiki.marklogic.com/display/~sstafford/Deployment+Procedures
-
 version: "3.6"
 
 services:
