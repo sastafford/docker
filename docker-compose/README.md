@@ -6,4 +6,6 @@ Each folder represents a different Docker recipe for MarkLogic.  For each recipe
 
     docker-compose up -d
 
+To uninstall the containers, run the following command.
 
+    docker-compose down
