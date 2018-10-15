@@ -27,6 +27,6 @@ COPY *.rpm /tmp/MarkLogic.rpm
 
 RUN yum -y install /tmp/MarkLogic.rpm && rm /tmp/MarkLogic.rpm
 
-EXPOSE 80 443 7997 7998 7999 8000 8001 8002 8080 8200 8201
+EXPOSE 7997 8000 8001 8002
 
 CMD /opt/MarkLogic/bin/MarkLogic && tail -f /dev/null
