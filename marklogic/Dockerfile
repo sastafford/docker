@@ -7,7 +7,8 @@ RUN yum update -y && yum -y install \
   glibc.i686 \
   net-tools.x86_64 \
   redhat-lsb-core.x86_64 \
-  vim
+  vim \
+  puppet-agent
 
 ENV MARKLOGIC_INSTALL_DIR /opt/MarkLogic
 ENV MARKLOGIC_DATA_DIR /data
@@ -18,7 +19,7 @@ ENV MARKLOGIC_USE daemon
 ENV MARKLOGIC_PID_FILE /var/run/MarkLogic.pid
 ENV MARKLOGIC_MLCMD_PID_FILE /var/run/mlcmd.pid
 ENV MARKLOGIC_UMASK 022
-ENV PATH /usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin:/opt/MarkLogic/mlcmd/bin
+ENV PATH /opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin
 ENV TERM null
 
 # Make sure to copy the rpm into the local directory before creating your image

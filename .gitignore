@@ -1,6 +1,4 @@
-######################
-## EPiServer Files
-######################
-*License.config
-
 *.rpm
+*.sublime*
+*.nar
+nifi/templates/*

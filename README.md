@@ -18,15 +18,15 @@
 
 ### MarkLogic 9
 
-    docker run --name=ml-9 -d -p 7997-8020:7997-8020/tcp -p 8200-8201:8200-8201/tcp -v c:/:/c sastafford/marklogic:latest
+    docker run --name=ml-9 -d -p 7997-8020:7997-8020/tcp -p 8200-8201:8200-8201/tcp -v c:/:/c sastafford/marklogic:9
 
 ### MarkLogic 8
 
-    docker run --name=ml-8 -d -p 7997-8020:7997-8020/tcp -p 8200-8201:8200-8201/tcp -v c:/:/c sastafford/marklogic:8.0-6.1
+    docker run --name=ml-8 -d -p 7997-8020:7997-8020/tcp -p 8200-8201:8200-8201/tcp -v c:/:/c sastafford/marklogic:8
 
 ### Start with a data volume container
 
-    docker run --volumes-from data-store --name=nyc -d -p 7997-8020:7997-8020/tcp -p 8200-8201:8200-8201/tcp sastafford/marklogic:8.0-6.1
+    docker run --volumes-from data-store --name=nyc -d -p 7997-8020:7997-8020/tcp -p 8200-8201:8200-8201/tcp sastafford/marklogic:9
 
 ## Attach to running MarkLogic container
     docker exec -it ml /bin/bash
@@ -47,4 +47,20 @@
     docker run --name node -v c:/:/c -d -p 8080:80 node:latest
 
 ## Start a Portainer instance
+
+### Linux
     docker run --name portainer -d -p 9000:9000/tcp -v "/var/run/docker.sock:/var/run/docker.sock" portainer/portainer
+
+
+# Mount Windows Dir to Linux
+     sudo mount.cifs //HPZBOOK-2921/workspace /home/scott/workspace -o credentials=/home/scott/credentials.txt,uid=scott,gid=scott,forceuid,forcegid
+
+# Start TOMCAT with WAR
+    docker run -it -p 8080:8080 -v $(pwd)/demo-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/demo.war tomcat:8.0.33
+
+[Dockerizing Nifi](https://www.bmtrealitystudios.com/dockerising-nifi/)
+
+Starting NiFi: 
+
+    docker run --name nifi -p 9090:9090 -d -e NIFI_WEB_HTTP_PORT='9090' apache/nifi:latest
+
