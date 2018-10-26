@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   marklogic:
-    image: gumball/marklogic:latest
+    image: marklogiccommunity/marklogic:latest
     volumes:
       - type: volume
         source: marklogic_data

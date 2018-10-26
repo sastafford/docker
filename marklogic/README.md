@@ -11,7 +11,7 @@ This MarkLogic image will put all of its forest and log data under the /data dir
 
 # Start single MarkLogic node
 
-    docker run --name=ml-9 -d -p 7997:7997 -p 8000-8002:8000-8002/tcp gumball/marklogic:latest
+    docker run --name=ml-9 -d -p 7997:7997 -p 8000-8002:8000-8002/tcp marklogiccommunity/marklogic:latest
 
 # Start MarkLogic with a Data Volume
 
@@ -23,7 +23,7 @@ A MarkLogic container is ephermal.  When the container is removed from the host 
 
 ## Start MarkLogic with the Data
 
-    docker run -d -v marklogic-data:/data --name=ml gumball/marklogic:latest
+    docker run -d -v marklogic-data:/data --name=ml marklogiccommunity/marklogic:latest
 
 # Attach to running MarkLogic container
 

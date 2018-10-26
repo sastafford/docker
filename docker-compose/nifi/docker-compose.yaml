@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   marklogic:
-    image: gumball/marklogic:latest
+    image: marklogiccommunity/marklogic:latest
     volumes:
       - type: volume
         source: marklogic_data
@@ -13,7 +13,7 @@ services:
       - "8063:8063/tcp"
 
   nifi:
-    image: gumball/nifi:latest
+    image: marklogiccommunity/nifi:latest
     links: 
       - marklogic
     volumes:

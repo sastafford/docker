@@ -6,9 +6,9 @@ This recipe creates an Apache NiFi docker image with the MarkLogic processors an
 
 To build this image, save your MarkLogic NARs and templates into the nars and templates directories.  
 
-    docker build -t gumball/nifi:latest .
+    docker build -t marklogiccommunity/nifi:latest .
 
 ## Starting NiFi: 
 
-    docker run --name nifi -p 9090:9090 -d -e NIFI_WEB_HTTP_PORT='9090' gumball/nifi:latest
+    docker run --name nifi -p 9090:9090 -d -e NIFI_WEB_HTTP_PORT='9090' marklogiccommunity/nifi:latest
 
