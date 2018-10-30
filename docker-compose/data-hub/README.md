@@ -10,6 +10,8 @@ To spin up these docker images, execute the following command and that's it.
  * Apache NiFi: http://localhost:8080
  * Data Hub Quick Start: http://localhost:8081
 
+Make sure to wait about a minute for all these containers to initialize.  
+
 The Data Hub Quick Start is mapped to this project root directory.  Make sure to select the following directory to install Quick Start.
  https://hub.docker.com/
 
