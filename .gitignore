@@ -6,3 +6,7 @@ nifi/templates/*
 build/
 docker-compose/gradle/src/
 *.war
+gradle/
+plugins/
+src/
+*.bat
