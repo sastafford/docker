@@ -5,3 +5,4 @@ nifi/templates/*
 .gradle/
 build/
 docker-compose/gradle/src/
+*.war
