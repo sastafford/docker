@@ -4,7 +4,7 @@ FROM openjdk:8
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 VOLUME /usr/src/app
-COPY quick-start-4.0.1.war /usr/src/app/quick-start.war
+COPY *.war /usr/src/app/quick-start.war
 EXPOSE 8080
 
 ENV SPRING_PROFILES_ACTIVE=prod
